@@ -517,7 +517,7 @@ export default function Editor({
       window.removeEventListener('pointermove', handlePointerMove)
       window.removeEventListener('pointerup', handlePointerUp)
     }
-  }, [])
+  }, [setFloorplanPaneRatio])
 
   useEffect(() => {
     initializeEditorRuntime()
