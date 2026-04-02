@@ -48,8 +48,6 @@ import { furnishTools } from '../ui/action-menu/furnish-tools'
 import { tools as structureTools } from '../ui/action-menu/structure-tools'
 
 import { PALETTE_COLORS } from '../ui/primitives/color-dot'
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/primitives/popover'
-import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/primitives/tooltip'
 import { NodeActionMenu } from './node-action-menu'
 
 const FALLBACK_VIEW_SIZE = 12
@@ -3208,7 +3206,7 @@ export function FloorplanPanel() {
     if (structureLayer === 'zones' && floorplanSelectionTool === 'marquee') {
       setFloorplanSelectionTool('click')
     }
-  }, [floorplanSelectionTool, structureLayer])
+  }, [floorplanSelectionTool, structureLayer, setFloorplanSelectionTool])
 
   useEffect(() => {
     setIsMacPlatform(navigator.platform.toUpperCase().includes('MAC'))
@@ -3968,7 +3966,7 @@ export function FloorplanPanel() {
 
   useEffect(() => {
     setHoveredGuideCorner(null)
-  }, [selectedGuide?.id])
+  }, [])
 
   useEffect(() => {
     if (!(selectedGuide && showGuides && canInteractWithGuides)) {
@@ -6653,7 +6651,7 @@ export function FloorplanPanel() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown, true)
     }
-  }, [isFloorplanHovered, phase, restoreGroundLevelStructureSelection])
+  }, [isFloorplanHovered, phase, restoreGroundLevelStructureSelection, setFloorplanSelectionTool])
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== 'c') {
