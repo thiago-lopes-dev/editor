@@ -478,7 +478,7 @@ const BoxSelectToolInner: React.FC = () => {
       canvas.removeEventListener('pointerdown', onCanvasPointerDown)
       canvas.removeEventListener('pointerup', onCanvasPointerUp)
     }
-  }, [camera, gl])
+  }, [gl, raycastToGround])
 
   // grid:move for cursor tracking + rectangle update during drag
   useEffect(() => {
